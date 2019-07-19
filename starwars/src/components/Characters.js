@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import CharacterCard from './CharacterCard';
 
 function Characters() {
-    const [characters, setCharacters] = useState();
+    const [characters, setCharacters] = useState([]);
 
     useEffect(() => {
 
@@ -14,7 +15,11 @@ function Characters() {
             .then(response => {
 
                 // Checking if the call is receiving back data.
-                // console.log(response.data) // Test was a success. data is being received by component.
+                // console.log(response.data.results) // Test was a success. data is being received by component.
+
+                const charactersArray = response.data.results;
+                
+                setCharacters(charactersArray);
             })
             .catch(error => {
                 console.log('error', error);
@@ -24,7 +29,7 @@ function Characters() {
 
     return (
         <div>
-
+         {characters.map(character => console.log(character))} 
         </div>
     )
 }
