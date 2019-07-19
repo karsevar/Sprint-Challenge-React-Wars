@@ -15,7 +15,7 @@ function Characters() {
             .then(response => {
 
                 // Checking if the call is receiving back data.
-                // console.log(response.data.results) // Test was a success. data is being received by component.
+                console.log(response.data.results) // Test was a success. data is being received by component.
 
                 const charactersArray = response.data.results;
                 
@@ -29,10 +29,13 @@ function Characters() {
 
     return (
         <div>
-         {characters.map(character => <CharacterCard 
+         {characters.map((character, index) => <CharacterCard
+                                        key={index} 
                                         name={character.name}
                                         gender={character.gender} 
                                         hair_color={character.hair_color} 
+                                        mass={character.mass}
+                                        height={character.height}
                                         birth_year={character.birth_year} />)} 
         </div>
     )
