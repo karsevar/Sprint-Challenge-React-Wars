@@ -8,15 +8,18 @@ const CardDiv = styled.div`
     margin-top: 10px;
     background-color: white;
     opacity: 0.7;
+    padding: 5px;
 `;
 
 const CharacterH3 = styled.h3`
-    padding: 5px;
     font-size: 30px;
+    margin: 5px 5px 5px 5px;
 `;
 
 const CharacterContent = styled.p`
     font-size: 20px;
+    padding: 2px;
+    margin: 5px;  
 `;
 
 function CharacterCard({name, gender, hair_color, birth_year, mass, height}) {

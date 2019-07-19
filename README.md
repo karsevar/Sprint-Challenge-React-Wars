@@ -28,6 +28,8 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] What does it mean to _think_ in react?
 
+ Thinking in react means to think in terms of reusably components so that you want be repeating yourself within the same project as well as future projects.
+
 - [ ] Describe state.
 
 - [ ] Describe props.
