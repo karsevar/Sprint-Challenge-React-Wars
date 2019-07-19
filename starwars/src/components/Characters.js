@@ -29,7 +29,11 @@ function Characters() {
 
     return (
         <div>
-         {characters.map(character => console.log(character))} 
+         {characters.map(character => <CharacterCard 
+                                        name={character.name}
+                                        gender={character.gender} 
+                                        hair_color={character.hair_color} 
+                                        birth_year={character.birth_year} />)} 
         </div>
     )
 }
