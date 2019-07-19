@@ -1,16 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// Styled components section for CharacterCard component markup:
+const CardDiv = styled.div`
+    width: 300px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: white;
+    opacity: 0.7;
+`;
+
+const CharacterH3 = styled.h3`
+    padding: 5px;
+    font-size: 30px;
+`;
+
+const CharacterContent = styled.p`
+    font-size: 20px;
+`;
+
 function CharacterCard({name, gender, hair_color, birth_year, mass, height}) {
     return (
-        <div className='character-card'>
-            <h3>Name: {name}</h3>
-            <p>Birth Year: {birth_year}</p>
-            <p>Hair Color: {hair_color}</p>
-            <p>Mass: {mass}</p>
-            <p>Height: {height}</p>
-            <p>gender: {gender}</p>
-        </div>
+        <CardDiv>
+            <CharacterH3>Name: {name}</CharacterH3>
+            <CharacterContent>Birth Year: {birth_year}</CharacterContent>
+            <CharacterContent>Hair Color: {hair_color}</CharacterContent>
+            <CharacterContent>Mass: {mass}</CharacterContent>
+            <CharacterContent>Height: {height}</CharacterContent>
+            <CharacterContent>gender: {gender}</CharacterContent>
+        </CardDiv>
     )
 }
 

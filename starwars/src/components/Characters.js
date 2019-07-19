@@ -1,6 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import CharacterCard from './CharacterCard';
+
+// Styling for characters div layer;
+const CharactersDiv = styled.div`
+    font-family: 'sans-serif';
+    margin: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+`;
 
 function Characters() {
     const [characters, setCharacters] = useState([]);
@@ -28,7 +39,7 @@ function Characters() {
     }, [])
 
     return (
-        <div>
+        <CharactersDiv>
          {characters.map((character, index) => <CharacterCard
                                         key={index} 
                                         name={character.name}
@@ -37,7 +48,7 @@ function Characters() {
                                         mass={character.mass}
                                         height={character.height}
                                         birth_year={character.birth_year} />)} 
-        </div>
+        </CharactersDiv>
     )
 }
 
