@@ -18,9 +18,6 @@ function Characters() {
 
     useEffect(() => {
 
-        // Will use a for loop to get more than ten characters per initial mount.
-        const counter = 10;
-
         axios  
             .get(`https://swapi.co/api/people/`)
             .then(response => {
