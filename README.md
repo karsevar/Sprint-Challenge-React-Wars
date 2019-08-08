@@ -26,13 +26,171 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] What is React JS and what problems does it try and solve? Support your answer with concepts introduced in class and from your personal research on the web.
 
+Simply put, React JS can defined as a component library that is used to build out and render User Interfaces to the DOM in a very efficient and easy to program manner. Within the React ecosystem, unlike similar libraries and frameworks, decisions such as data structure and file structure are left up to the individual developer as well as user interface structure is divided into individual file blocks called components. 
+
+React's inherent eccentricities are a product of the creators' desire to bridge the gap between the different languages needed for frontend development and the performance deficit of having to continually rerender the DOM with every addition of a new html element. Hence through React, developers are now able to create HTML tags (written in JSX) and program event handlers in a single computer language (JavaScript) and thanks to the advent of the virtual DOM (which is hard baked into the React library) the performance hit for rendering new html elements to the DOM has been greatly reduced. 
+
+The following is an example of React's ease of use compared to the basic DOM
+API: 
+
+React Example:  
+```
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="App">
+      <h1>Hello CodeSandbox</h1>
+      <ButtonCounter count={count} incrementCount={() => setCount(count + 1)} />
+      <button onClick={() => setCount(0)}>Reset</button>
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+```
+
+This example shows that what was once a two language project (the need to first code the html and use the querySelector() command to find the html element you want to add the event listener to and then add the event listener) has been transformed into a single JavaScript program.
+
 - [ ] What does it mean to _think_ in react?
+
+According to this link https://reactjs.org/docs/thinking-in-react.html, think in react is a three step process that allows you to reason about your project and refactor it into a react UI framework that uses components.
+
+Quoting from the article:
+
+ Step one you are supposed to look through the UI mock up and start drawing around elements that could be individual components.
+
+ Step two start building a static version of the UI using only props (the data that you pass into the application, which should be considered immutable) with no interactivity (namely event listeners and state data, data that changes with user input).
+
+ Step three create the interactivity components and structure appearance of the state data. 
 
 - [ ] Describe state.
 
+To begin, state can be described as variable data (like props) that is initialized and managed by a component. In addition, a state can be initialized by a prop variable and hence props and state are regularly confused but the main difference is that props remain the same with each user interaction while state changes.
+
+Example of state being used in a component function: 
+```
+function ButtonCounter(props) {
+  return (
+    <div>
+      <h1>{props.count}</h1>
+      <button onClick={props.incrementCount}>Click Me!</button>
+    </div>
+  );
+}
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="App">
+      <h1>Hello CodeSandbox</h1>
+      <ButtonCounter count={count} incrementCount={() => setCount(count + 1)} />
+      <button onClick={() => setCount(0)}>Reset</button>
+    </div>
+  );
+}
+```
+
+In this example count can be considered a state variable because it's being changed by a user onClick event. 
+
 - [ ] Describe props.
 
+To begin, props are variables passed to a child component by its parent component.
+
+Example of a props being passed to child components (Following example is from the training kit Composing React Components and Passing Data Via Props):
+```
+const simpsonData = [
+  {
+    name: "Orville Simpson",
+    spouse: "Yuma Hickman",
+    children: [
+      {
+        name: "Abraham Simpson",
+        spouse: "Mona",
+        children: [
+          {
+            name: "Homer Simpson",
+            spouse: "Marge Bouvier",
+            children: [
+              {
+                name: "Bart Simpson"
+              },
+              {
+                name: "Lisa Simpson"
+              },
+              {
+                name: "Maggie Simpson"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+];
+
+const GrandChild = props => {
+  return (
+    <div>
+      <h3>Grand Child: {props.name}</h3>
+    </div>
+  );
+};
+
+const Child = props => {
+  console.log(props);
+  return (
+    <div>
+      <h2>Child: {props.name}</h2>
+      <GrandChild name={props.grandChildName} />
+    </div>
+  );
+};
+
+const Parent = props => {
+  return (
+    <div>
+      <h1>Parent: {props.name}</h1>
+      <Child name={props.childName} grandChildName={props.grandChildName} />
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <div className="App">
+      <h2>Simpsons Lineage</h2>
+      <Parent
+        name={simpsonData[0].name}
+        childName={simpsonData[0].children[0].name}
+        grandChildName={simpsonData[0].children[0].children[0].name}
+      />
+    </div>
+  );
+};
+```
+As you can see the App component passes simpsonData to the Parent component as props and the Parent component passes the same data down to the Child component as props. 
+
 - [ ] What are side effects, and how do you sync effects in a React component to state or prop changes?
+
+A side effect is anything that affects something outside of the scope of the function being executed. Within the React library you can control side effects of a particular function through the useEffect command. 
+
+You can sync effects in a React component through the dependency array argument.
+
+useEffect syntax and arguments:
+```
+useEffect(callback function, dependency array) 
+
+dependency array commands:
+useEffect(fn) // rerun if anything changes in the function. 
+useEffect(fn, []) // run only once (during mounting).
+useEffect(fn, [these, states, props]) // run only if specified props or states change. 
+```
+
+
+
 
 ## Project Set Up
 
